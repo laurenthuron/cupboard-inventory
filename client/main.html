@@ -1,0 +1,23 @@
+<head>
+	<title>Cupboard Inventory</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, height=device-height">
+	<!--load everything-->
+	<script defer src="/fontawesome-all.js"></script>
+</head>
+
+<template name="ApplicationLayout">
+		{{> yield "nav"}}
+
+	{{#if loggingIn}}
+		{{> spinner}}
+	{{else}}
+
+		{{> yield "main"}}
+	{{/if}}
+
+		{{> yield "footer"}}
+</template>
+
+<template name="loading">
+	{{> spinner}}
+</template>
