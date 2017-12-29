@@ -1,11 +1,11 @@
 
 Template.addItemModal.onCreated(function () {
-	Session.setDefault('user-management.addItemModal.hasError', false);
+	Session.setDefault('manage-items.addItemModal.hasError', false);
 });
 
 Template.addItemModal.helpers({
 	hasError: function () {
-		return Session.get('user-management.addItemModal.hasError');
+		return Session.get('manage-items.addItemModal.hasError');
 	}
 });
 
