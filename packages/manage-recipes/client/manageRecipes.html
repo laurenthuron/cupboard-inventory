@@ -1,0 +1,17 @@
+<template name="manageRecipes">
+	<div class="row">
+		<div class="col-xs-12 col-lg-12 mt-1">
+			{{> listRecipes}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-lg-12 mt-1">
+			<div class="d-flex flex-row-reverse">
+				{{> addRecipe}}
+			</div>
+		</div>
+	</div>
+
+	{{> addRecipeModal}}
+	{{> editRecipeModal}}
+</template>
