@@ -24,14 +24,16 @@ inventorySchema = new SimpleSchema({
 	quantity_units: {
 		type: String,
 		defaultValue: 'g',
-		allowedValues: ['ml', 'l', 'mg', 'g', 'kg'],
+		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'container'],
 		autoform: {
 			options: [
 				{label: "ml", value: "ml"},
 				{label: "l", value: "l"},
 				{label: "mg", value: "mg"},
 				{label: "g", value: "g"},
-				{label: "kg", value: "kg"}
+				{label: "kg", value: "kg"},
+				{label: "can", value: "can"},
+				{label: "container", value: "container"}
 			]
 		}
 	},
@@ -63,11 +65,22 @@ inventorySchema = new SimpleSchema({
 	category: {
 		type: String,
 		label: "Category",
-		allowedValues: ['Perishables','Non-Perishables'],
+		allowedValues: ['Perishables','NonPerishables', 'Meat', 'Poultry', 'Dairy', 'Frozen', 'Fruits', 'Deli', 'CannedGoods', 'Spices', 'Cereals', 'ReadyMade'],
 		autoform: {
 			options: [
 				{label: "Perishables", value: "Perishables"},
-				{label: "Non-Perishables", value: "Non-Perishables"}
+				{label: "Non-Perishables", value: "NonPerishables"},
+				{label: "Vegetables", value: "Vegetables"},
+				{label: "Meat", value: "Meat"},
+				{label: "Poultry", value: "Poultry"},
+				{label: "Dairy", value: "Dairy"},
+				{label: "Frozen", value: "Frozen"},
+				{label: "Fruits", value: "Fruits"},
+				{label: "Deli", value: "Deli"},
+				{label: "Canned Goods", value: "CannedGoods"},
+				{label: "Spices", value: "Spices"},
+				{label: "Cereals", value: "Cereals"},
+				{label: "ReadyMade", value: "ReadyMade"}
 			]
 		},
 		max: 1000
