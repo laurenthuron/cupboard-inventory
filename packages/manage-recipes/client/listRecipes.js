@@ -27,11 +27,18 @@ Template.listRecipes.helpers({
 });
 
 Template.listRecipes.events({
-	"click .editRecipe h5" ( event, template ) {
+	"click .editRecipe" ( event, template ) {
 		event.preventDefault();
+		event.stopImmediatePropagation();
 		
 		const recipeId = $(event.target).attr('data-id');
 		Session.set('manage-recipes.listRecipes.editRecipeId', recipeId);
 		$('#editRecipeModal').modal('toggle');
+	},
+	"click .viewRecipe" ( event, template ) {
+		event.preventDefault();
+		
+		const recipeId = $($(event.target)).find('.editRecipe').attr('data-id');
+		Router.go(`/recipe/${recipeId}`);
 	}
 });

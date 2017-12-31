@@ -31,10 +31,12 @@ Package.onUse(function(api) {
 		'client/listRecipes.html',
 		'client/addRecipe.html',
 		'client/editRecipe.html',
+		'client/displayRecipe.html',
 		'client/manageRecipes.js',
 		'client/listRecipes.js',
 		'client/addRecipe.js',
 		'client/editRecipe.js',
+		'client/displayRecipe.js',
 		'client/routes.js'
 	], 'client');
 	

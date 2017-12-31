@@ -2,9 +2,9 @@
 	{{#if recipeList}}
 		<div class="list-group">
 			{{#each recipeList}}
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start editRecipe">
+				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start viewRecipe">
 					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1" data-id="{{_id}}">{{recipeName}}</h5>
+						<h5 class="mb-1"><i class="fas fa-edit editRecipe" data-id="{{_id}}"></i> {{recipeName}}</h5>
 						<i class="glypg-icon {{getCategoryIcon recipeCategory}}"></i>
 					</div>
 				</a>

@@ -3,3 +3,12 @@ Router.route('/manageRecipes', function () {
 		to: 'main'
 	})
 });
+
+Router.route('/recipe/:_id', function () {
+	this.render('displayRecipe', {
+		to: 'main',
+		data: function () {
+			return Recipes.findOne( { _id: this.params._id } );
+		}
+	})
+});

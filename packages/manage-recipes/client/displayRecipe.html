@@ -1,0 +1,38 @@
+<template name="displayRecipe">
+		{{#if recipeImage}}
+		<div class="row">
+			<img src="{{recipeImage}}" class="img img-fluid" />
+		</div>
+		{{/if}}
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<h2 class="pt-2">{{recipeName}}</h2>
+		</div>
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<div class="d-flex flex-row">
+				<span class="p-2"><i class="fas fa-clock"></i> Prep time: {{recipePrepTime}} min</span>
+				<span class="p-2"><i class="fas fa-clock"></i> Cook time: {{recipeCookTime}} min</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<strong>Ingredients list</strong>
+			<ul>
+			{{#each recipeIngredients}}
+				<li>{{this.quantity}} {{this.itemName}}</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<strong>Instructions</strong>
+			<ol>
+			{{#each recipeMethod}}
+				<li>{{this}}</li>
+			{{/each}}
+			</ol>
+		</div>
+	</div>
+</template>
