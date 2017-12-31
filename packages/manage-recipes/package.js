@@ -23,6 +23,7 @@ Package.onUse(function(api) {
 	api.use(['templating', 'iron:router', 'alexwine:bootstrap-4', 'session'], 'client');
 	
 	api.addFiles([
+		'both/startup.js',
 		'both/recipesCollection.js'
 	]);
 	
