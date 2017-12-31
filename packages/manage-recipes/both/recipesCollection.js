@@ -40,6 +40,16 @@ RecipesSchema = new SimpleSchema({
 			}
 		}
 	},
+	recipePrepTime: {
+		type: Number,
+		min: 1,
+		label: 'Preparation time'
+	},
+	recipeCookTime: {
+		type: Number,
+		min: 1,
+		label: 'Cooking time'
+	},
 	recipeIngredients: {
 		type: Array,
 		label: 'Required Ingredients',
