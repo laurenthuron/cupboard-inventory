@@ -21,6 +21,8 @@ Package.onUse(function(api) {
 	api.use('aldeed:autoform@6.0.0');
   
   api.use(['templating', 'iron:router', 'alexwine:bootstrap-4', 'session'], 'client');
+	
+	api.addAssets('resources/food-3048440_640.jpg', 'client');
   
   api.addFiles([
   		'both/startup.js',

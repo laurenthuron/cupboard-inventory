@@ -68,7 +68,7 @@ Router.route('home', function () {
 	if (!this.ready()) {
 		this.render('loading');
 	} else {
-		this.render('manageItems', {
+		this.render('home', {
 			to: "main"
 		});
 	}
@@ -76,7 +76,7 @@ Router.route('home', function () {
 
 Router.route('/(.*)', function () {//regex for every route, must be last
 	if (this.ready()) {
-		this.redirect("manageItems");
+		this.redirect("home");
 	} else
 		this.render('loading');
 });
