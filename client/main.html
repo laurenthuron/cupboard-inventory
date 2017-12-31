@@ -23,3 +23,25 @@
 <template name="loading">
 	{{> spinner}}
 </template>
+
+<template name="home">
+	{{#if availablePlugins}}
+		<div class="row">
+		{{#each availablePlugins}}
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="card border-dark h-100 mt-2">
+					<a href="{{this.pluginRoute}}">
+						{{#if this.pluginDisplayImage}}
+							<img class="card-img-top" src="{{this.pluginDisplayImage}}" alt="Card image cap">
+						{{/if}}
+						<div class="card-body text-dark">
+							<h5 class="card-title">{{this.pluginDisplayName}}</h5>
+							<p class="card-text">{{this.pluginHomeCardInfo}}</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		{{/each}}
+		</div>
+	{{/if}}
+</template>
