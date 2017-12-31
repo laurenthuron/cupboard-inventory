@@ -1,5 +1,5 @@
 <template name="navigationBar">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Inspire Me!</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -7,15 +7,16 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="{{pathFor "home"}}">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{pathFor "manageItems"}}">Cupboard Inventory</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{pathFor "manageRecipes"}}">Recipes</a>
-				</li>
+				{{#if navElements}}
+					{{#each navElements}}
+						<li class="nav-item">
+							<a class="nav-link" href="{{this.pluginRoute}}">{{this.pluginDisplayName}}</a>
+						</li>
+					{{/each}}
+				{{/if}}
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
