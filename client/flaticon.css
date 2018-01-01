@@ -1,0 +1,131 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:02
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("fonts/FlatIcon/Flaticon.eot");
+  src: url("fonts/FlatIcon/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("fonts/FlatIcon/Flaticon.woff") format("woff"),
+       url("fonts/FlatIcon/Flaticon.ttf") format("truetype"),
+       url("fonts/FlatIcon/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../public/fonts/FlatIcon/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-apple-and-grapes-on-a-bowl:before { content: "\f100"; }
+.flaticon-apple-cut-in-half-with-visible-seeds:before { content: "\f101"; }
+.flaticon-apple-with-stem-and-leaf:before { content: "\f102"; }
+.flaticon-barbacue-utensils:before { content: "\f103"; }
+.flaticon-barbecue-grill:before { content: "\f104"; }
+.flaticon-beer-in-glass-and-bottle:before { content: "\f105"; }
+.flaticon-beer-pint:before { content: "\f106"; }
+.flaticon-bowl-of-hot-soup-on-a-plate:before { content: "\f107"; }
+.flaticon-burger-and-soda-with-straw:before { content: "\f108"; }
+.flaticon-cabbage:before { content: "\f109"; }
+.flaticon-cheers:before { content: "\f10a"; }
+.flaticon-cheese-with-little-cutted-triangular-piece:before { content: "\f10b"; }
+.flaticon-chef-with-hat:before { content: "\f10c"; }
+.flaticon-cherries-with-stem:before { content: "\f10d"; }
+.flaticon-chicken-leg:before { content: "\f10e"; }
+.flaticon-chocolate-donut-with-sprinkles:before { content: "\f10f"; }
+.flaticon-cocktail-drink-with-stirrer:before { content: "\f110"; }
+.flaticon-coffee-jar:before { content: "\f111"; }
+.flaticon-coffee-jar-and-filter:before { content: "\f112"; }
+.flaticon-coffee-maker-machine:before { content: "\f113"; }
+.flaticon-cooking-food-in-a-hot-casserole:before { content: "\f114"; }
+.flaticon-corn-with-leaves:before { content: "\f115"; }
+.flaticon-croissant:before { content: "\f116"; }
+.flaticon-cucumber-cut-in-half:before { content: "\f117"; }
+.flaticon-cupcake-dessert:before { content: "\f118"; }
+.flaticon-dining-meal-covered:before { content: "\f119"; }
+.flaticon-dish-cover:before { content: "\f11a"; }
+.flaticon-eggplant-rotated-to-left:before { content: "\f11b"; }
+.flaticon-fire-flames:before { content: "\f11c"; }
+.flaticon-fish-tail-bone:before { content: "\f11d"; }
+.flaticon-food-observation:before { content: "\f11e"; }
+.flaticon-food-on-a-stick:before { content: "\f11f"; }
+.flaticon-french-fries-on-container:before { content: "\f120"; }
+.flaticon-fresh-carrot:before { content: "\f121"; }
+.flaticon-fried-chicken-leg-on-a-plate:before { content: "\f122"; }
+.flaticon-fried-egg:before { content: "\f123"; }
+.flaticon-giant-pumpkin:before { content: "\f124"; }
+.flaticon-glass-of-wine-and-bottle:before { content: "\f125"; }
+.flaticon-grapes-and-pear-on-a-platter:before { content: "\f126"; }
+.flaticon-grapes-with-leaf-and-stem:before { content: "\f127"; }
+.flaticon-half-avocado:before { content: "\f128"; }
+.flaticon-half-lemon:before { content: "\f129"; }
+.flaticon-hamburger-with-sesame-seeds:before { content: "\f12a"; }
+.flaticon-heating-pad:before { content: "\f12b"; }
+.flaticon-horizontal-lemon:before { content: "\f12c"; }
+.flaticon-hot-bread-with-smoke:before { content: "\f12d"; }
+.flaticon-hot-coffee-on-a-tall-paper-cup:before { content: "\f12e"; }
+.flaticon-hot-dog-with-sauce-and-bread:before { content: "\f12f"; }
+.flaticon-hot-dogs-package:before { content: "\f130"; }
+.flaticon-hot-drink-on-a-cup-button:before { content: "\f131"; }
+.flaticon-hot-fish:before { content: "\f132"; }
+.flaticon-hot-fish-bone:before { content: "\f133"; }
+.flaticon-hot-kitchen-pot:before { content: "\f134"; }
+.flaticon-hot-meal-sign:before { content: "\f135"; }
+.flaticon-hot-pepper:before { content: "\f136"; }
+.flaticon-hot-pot:before { content: "\f137"; }
+.flaticon-hot-soup:before { content: "\f138"; }
+.flaticon-ice-cream-cone:before { content: "\f139"; }
+.flaticon-ice-cream-in-glass:before { content: "\f13a"; }
+.flaticon-icecream-cup:before { content: "\f13b"; }
+.flaticon-leaves-of-herbs:before { content: "\f13c"; }
+.flaticon-loaves-of-bread:before { content: "\f13d"; }
+.flaticon-long-cofee-pot:before { content: "\f13e"; }
+.flaticon-meat-slice:before { content: "\f13f"; }
+.flaticon-milk-jar-with-label:before { content: "\f140"; }
+.flaticon-milk-package:before { content: "\f141"; }
+.flaticon-noodle-soup-on-a-bowl:before { content: "\f142"; }
+.flaticon-onion-bulb:before { content: "\f143"; }
+.flaticon-onion-bulb-1:before { content: "\f144"; }
+.flaticon-opened-peas:before { content: "\f145"; }
+.flaticon-orange-with-leaf:before { content: "\f146"; }
+.flaticon-packed-sausage:before { content: "\f147"; }
+.flaticon-pair-of-gloves:before { content: "\f148"; }
+.flaticon-paper-cupcake:before { content: "\f149"; }
+.flaticon-peach-piece:before { content: "\f14a"; }
+.flaticon-preserved-in-a-bottle:before { content: "\f14b"; }
+.flaticon-restaurant-menu-card:before { content: "\f14c"; }
+.flaticon-restaurant-utensils:before { content: "\f14d"; }
+.flaticon-rice-bowl-with-chopsticks:before { content: "\f14e"; }
+.flaticon-sausage-on-a-fork:before { content: "\f14f"; }
+.flaticon-sausage-on-a-fork-1:before { content: "\f150"; }
+.flaticon-small-mushroom:before { content: "\f151"; }
+.flaticon-spoon-and-fork-upside-down:before { content: "\f152"; }
+.flaticon-squid:before { content: "\f153"; }
+.flaticon-strawberry:before { content: "\f154"; }
+.flaticon-sushi-platter-with-chopsticks:before { content: "\f155"; }
+.flaticon-take-away-tacos:before { content: "\f156"; }
+.flaticon-tea-bag-with-tag:before { content: "\f157"; }
+.flaticon-teapot-and-cup:before { content: "\f158"; }
+.flaticon-three-balls-ice-cream-cone:before { content: "\f159"; }
+.flaticon-three-bananas:before { content: "\f15a"; }
+.flaticon-tomato-healthy-veggie:before { content: "\f15b"; }
+.flaticon-traditional-mate:before { content: "\f15c"; }
+.flaticon-tube-glass-with-shine:before { content: "\f15d"; }
+.flaticon-two-layer-birthday-cake-with-candle:before { content: "\f15e"; }
+.flaticon-upsized-drink-with-straw:before { content: "\f15f"; }
+.flaticon-very-hot-drink-with-shine:before { content: "\f160"; }
+.flaticon-watermelon-slice:before { content: "\f161"; }
+.flaticon-wine-bottle-in-bucket-with-two-glasses:before { content: "\f162"; }
+.flaticon-wine-crystal-cup:before { content: "\f163"; }
