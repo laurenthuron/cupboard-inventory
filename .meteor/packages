@@ -17,12 +17,14 @@ es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.3.0            # Server-side component of the `meteor shell` command
 
+laurenth:utils
 accounts-ui
 accounts-password
 accounts-google
 accounts-facebook
 http
 underscore
+check
 alanning:roles
 iron:router
 aldeed:collection2-core
@@ -33,7 +35,7 @@ sacha:spin
 useraccounts:core
 useraccounts:bootstrap
 useraccounts:iron-routing
+ongoworks:security
 laurenth:user-management
 laurenth:manage-items
-ongoworks:security
-check
+laurenth:navbar

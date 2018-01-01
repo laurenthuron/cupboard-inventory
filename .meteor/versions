@@ -58,7 +58,9 @@ iron:url@1.1.0
 jquery@1.11.10
 launch-screen@1.1.1
 laurenth:manage-items@0.0.1
+laurenth:navbar@0.0.1
 laurenth:user-management@0.0.1
+laurenth:utils@0.0.1
 less@2.7.11
 livedata@1.0.18
 localstorage@1.2.0
