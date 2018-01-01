@@ -56,9 +56,14 @@ Router.onBeforeAction(function () {
 		Router.go("/sign-up");
 		this.next();
 	} else {
-		// otherwise don't hold up the rest of hooks or our route/action function
-		// from running
-		this.next();
+		if (!this.ready()) {
+			this.render('loading');
+			pause();
+		} else {
+			// otherwise don't hold up the rest of hooks or our route/action function
+			// from running
+			this.next();
+		}
 	}
 }, {
 	except: exceptions
