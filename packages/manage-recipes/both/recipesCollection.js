@@ -40,6 +40,14 @@ RecipesSchema = new SimpleSchema({
 			}
 		}
 	},
+	recipeImage: {
+		type: String,
+		optional: true,
+		autoform: {
+			type: "hidden",
+			label: false
+		}
+	},
 	recipePrepTime: {
 		type: Number,
 		min: 1,
