@@ -10,15 +10,21 @@ Package.describe({
   documentation: 'README.md'
 });
 
+Npm.depends({
+	"aws-sdk": '2.176.0'
+});
+
 Package.onUse(function(api) {
   api.versionsFrom('1.6.0.1');
   api.use('ecmascript');
-  api.mainModule('aws-support.js');
+	api.use('underscore');
+	api.use('mongo');
+  api.use('templating', 'iron:router', 'session', 'client');
+  
+  api.addFiles([
+    'client/uploadFile.hmtl',
+    'client/uploadFile.js',
+  ], 'client');
+  
 });
 
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('laurenth:aws-support');
-  api.mainModule('aws-support-tests.js');
-});
