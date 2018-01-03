@@ -91,6 +91,11 @@ inventorySchema = new SimpleSchema({
 		autoValue: function () {
 			return new Date();
 		}
+	},
+	favorite: {
+		type: Boolean,
+		label: 'Favorite',
+		defaultValue: false
 	}
 });
 
