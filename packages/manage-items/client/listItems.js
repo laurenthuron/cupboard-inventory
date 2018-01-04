@@ -23,7 +23,7 @@ Template.listItems.helpers({
 });
 
 Template.listItems.events({
-	"click .editItem h5" ( event, template ) {
+	"click span.editable" ( event, template ) {
 		event.preventDefault();
 		
 		const itemId = $(event.target).attr('data-id');

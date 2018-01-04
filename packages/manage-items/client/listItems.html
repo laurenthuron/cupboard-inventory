@@ -4,8 +4,9 @@
 		{{#each inventoryList}}
 			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start editItem">
 				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1" data-id="{{_id}}">{{itemName}} {{quantity}}{{quantity_units}}</h5>
-					<span class="setFavorite glyphicon {{isFavorite favorite}}"></span>
+
+					<h5 class="mb-1" data-id="{{_id}}"><span class="setFavorite glyphicon {{isFavorite favorite}}"></span>
+						<span class="editable">{{itemName}} {{quantity}}{{quantity_units}}</span></h5>
 					<small>
 						<i class="fas fa-minus-circle removeFromStock"></i> {{inStock stock}} <i class="fas fa-plus-circle addToStock"></i>
 					</small>
