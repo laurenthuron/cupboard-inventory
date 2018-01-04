@@ -3,6 +3,9 @@ import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform', 'denyInsert', 'denyUpdate']);
 
 Inventory = new Mongo.Collection('inventory');
+if ( Meteor.isServer ) {
+	Inventory._ensureIndex({itemName: 1, category: 1, favorite: 1});
+}
 
 inventorySchema = new SimpleSchema({
 	itemName: {
