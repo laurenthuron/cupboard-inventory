@@ -43,5 +43,14 @@ Meteor.methods({
 			}
 		}
 		return false;
+	},
+	favorite: function ( docId ) {
+		if (Roles.userIsInRole(this.userId, "user")) {
+			const item = Inventory.findOne(docId, {fields: {favorite: 1}});
+			if ( item ) {
+				let bool = (item.favorite)? false : true;
+				return Inventory.update(docId, {$set: {favorite: bool}});
+			}
+		}
 	}
 });

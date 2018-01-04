@@ -16,11 +16,14 @@ Template.listItems.helpers({
 		} else {
 			return `Out of stock`;
 		}
+	},
+	isFavorite: function (bool) {
+		return (bool) ? 'glyphicon-star' : 'glyphicon-star-empty';
 	}
 });
 
 Template.listItems.events({
-	"click .editItem h5" ( event, template ) {
+	"click span.editable" ( event, template ) {
 		event.preventDefault();
 		
 		const itemId = $(event.target).attr('data-id');
@@ -38,6 +41,16 @@ Template.listItems.events({
 		Meteor.call('addToStock', this._id, function ( error, result ) {
 			if ( error ) {
 				console.log(error);
+			}
+		});
+	},
+	"click .setFavorite" ( event, template ) {
+		event.preventDefault();
+		
+		const itemId = $(event.target).closest('.editItem').find('h5').attr('data-id');
+		Meteor.call('favorite', itemId, function ( error, result ) {
+			if ( error ) {
+				console.log(error)
 			}
 		});
 	}
