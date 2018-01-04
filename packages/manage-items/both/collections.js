@@ -24,7 +24,7 @@ inventorySchema = new SimpleSchema({
 	quantity_units: {
 		type: String,
 		defaultValue: 'g',
-		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'container'],
+		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'unit', 'container'],
 		autoform: {
 			options: [
 				{label: "ml", value: "ml"},
@@ -33,6 +33,7 @@ inventorySchema = new SimpleSchema({
 				{label: "g", value: "g"},
 				{label: "kg", value: "kg"},
 				{label: "can", value: "can"},
+				{label: "unit", value: "unit"},
 				{label: "container", value: "container"}
 			]
 		}
