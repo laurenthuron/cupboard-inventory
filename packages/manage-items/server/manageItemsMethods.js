@@ -6,7 +6,8 @@ Meteor.methods({
 			stock: Number,
 			quantity_units: String,
 			category: String,
-			description: Match.Maybe(String)
+			description: Match.Maybe(String),
+			itemPrice: Number
 		});
 		if (Roles.userIsInRole(this.userId, "user")) {
 			return Inventory.insert(doc);
@@ -14,7 +15,18 @@ Meteor.methods({
 		return false;
 	},
 	editItem: function ( docId, updateDoc ) {
-		
+		check ( docId, String );
+		check(updateDoc, {
+			$set: {
+				itemName: String,
+				quantity: Number,
+				stock: Number,
+				quantity_units: String,
+				category: String,
+				description: Match.Maybe(String),
+				itemPrice: Number
+			}
+		});
 		if (Roles.userIsInRole(this.userId, "user")) {
 			return Inventory.update(docId, updateDoc);
 		}

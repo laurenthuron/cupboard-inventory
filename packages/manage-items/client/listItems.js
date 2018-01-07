@@ -26,7 +26,7 @@ Template.listItems.events({
 	"click span.editable" ( event, template ) {
 		event.preventDefault();
 		
-		const itemId = $(event.target).attr('data-id');
+		const itemId = $(event.target).closest('h5').attr('data-id');
 		Session.set('manage-items.listItems.editItemId', itemId);
 		$('#editItemModal').modal('toggle');
 	},
