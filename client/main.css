@@ -1,3 +1,9 @@
 .glyphicon-star {
     color: #ffd000;
 }
+
+body {
+    background-image: url("seamless-1082983_200_bw.png");
+    background-repeat: repeat;
+    height: 100vh;
+}
