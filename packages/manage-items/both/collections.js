@@ -66,7 +66,7 @@ inventorySchema = new SimpleSchema({
 	category: {
 		type: String,
 		label: "Category",
-		allowedValues: ['Perishables','NonPerishables', 'Meat', 'Poultry', 'Dairy', 'Frozen', 'Fruits', 'Deli', 'CannedGoods', 'Spices', 'Cereals', 'ReadyMade'],
+		allowedValues: ['Perishables','NonPerishables', 'Vegetables', 'Meat', 'Poultry', 'Dairy', 'Frozen', 'Fruits', 'Deli', 'CannedGoods', 'Spices', 'Cereals', 'ReadyMade'],
 		autoform: {
 			options: [
 				{label: "Perishables", value: "Perishables"},
@@ -97,11 +97,17 @@ inventorySchema = new SimpleSchema({
 		type: Boolean,
 		label: 'Favorite',
 		defaultValue: false
+	},
+	itemPrice: {
+		type: Number,
+		min: 0,
+		optional: true,
+		label: "Price"
 	}
 });
 
 Inventory.attachSchema(inventorySchema);
 
-Inventory.permit('insert').ifLoggedIn();
-Inventory.permit('update').ifLoggedIn();
-Inventory.permit('remove').ifLoggedIn();
+Inventory.permit('insert').ifLoggedIn().allowInClientCode();
+Inventory.permit('update').ifLoggedIn().allowInClientCode();
+Inventory.permit('remove').ifLoggedIn().allowInClientCode();

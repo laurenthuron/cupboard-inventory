@@ -9,9 +9,16 @@ Template.addItemModal.helpers({
 	}
 });
 
+Template.addItemModal.events({
+	"click button[type=submit]" ( event, template ) {
+		//event.preventDefault();
+	}
+});
+
 AutoForm.hooks({
 	insertInventoryItemForm: {
 		onSubmit: function (insertDoc, updateDoc, currentDoc) {
+			this.event.preventDefault();
 			const self = this;
 			Meteor.call('addItem', insertDoc, function ( error, result ) {
 				if ( error ) {
@@ -21,12 +28,15 @@ AutoForm.hooks({
 					self.done();
 				}
 			});
+			return false;
 		},
 		onSuccess: function (formType, result) {
+			this.event.preventDefault();
 			$('#addItemModal').modal('hide');
+			return false;
 		},
 		onError: function (error) {
-		
+			console.log(error);
 		}
 	}
 });
