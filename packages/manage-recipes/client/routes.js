@@ -1,7 +1,10 @@
-Router.route('/manageRecipes', function () {
-	this.render('manageRecipes', {
-		to: 'main'
-	})
+Router.route('/manageRecipes', {
+	loadingTemplate: 'loading',
+	waitOn: function () {
+		return Meteor.subscribe('Recipes');
+	},
+	action: function () {
+	}
 });
 
 Router.route('/recipe/:_id', function () {

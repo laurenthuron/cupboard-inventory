@@ -1,5 +1,6 @@
-Meteor.publish('InventorySearch', function ( search ) {
+Meteor.publish('search', function ( search, dbName ) {
 	check( search, Match.OneOf( String, null, undefined ) );
+	check ( dbName, String );
 	const currentUserId = this.userId;
 	if ( currentUserId ) {
 		if (Roles.userIsInRole(currentUserId, ['admin', 'user'])) {
@@ -13,14 +14,14 @@ Meteor.publish('InventorySearch', function ( search ) {
 					$or: [
 						{ itemName: regex },
 						{ category: regex },
-						{ favorite: regex }
+						{ favorite: regex },
+						{ recipeName: regex }
 					]
 				};
 				
 				projection.limit = 100;
 			}
-			
-			return Inventory.find( query, projection );
+			return utils.dbIndex[dbName].find( query, projection );
 		} else {
 			this.stop();
 			return;

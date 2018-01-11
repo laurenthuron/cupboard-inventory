@@ -1,5 +1,5 @@
 Template.listItems.onCreated( function () {
-	this.subscribe('Inventory');
+
 });
 
 Template.listItems.onRendered( function () {
@@ -9,16 +9,6 @@ Template.listItems.onRendered( function () {
 Template.listItems.helpers({
 	inventoryList: function () {
 		return Inventory.find();
-	},
-	inStock: function (stockLevel) {
-		if ( stockLevel > 0 ) {
-			return `In stock: ${stockLevel}`;
-		} else {
-			return `Out of stock`;
-		}
-	},
-	isFavorite: function (bool) {
-		return (bool) ? 'glyphicon-star' : 'glyphicon-star-empty';
 	}
 });
 

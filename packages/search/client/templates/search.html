@@ -1,22 +1,31 @@
 <template name="search">
-	<div class="list-group mt-2">
+	<div class="list-group mt-3">
 		{{#if searching}}
 			{{> loading}}
 		{{else}}
-			{{#each inventory}}
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start editItem">
-					<div class="d-flex w-100 justify-content-between">
-
-						<h5 class="mb-1" data-id="{{_id}}"><span class="setFavorite glyphicon {{isFavorite favorite}}"></span>
-							<span class="editable">{{itemName}} {{quantity}}{{quantity_units}}</span></h5>
-						<small>
-							<i class="fas fa-minus-circle removeFromStock"></i> {{inStock stock}} <i class="fas fa-plus-circle addToStock"></i>
-						</small>
-					</div>
-					{{#if description}}
-						<p class="mb-1">{{description}}</p>
-					{{/if}}
-				</a>
+			{{#each searchResult}}
+				{{#if itemName}}
+					<a href="#" class="list-group-item list-group-item-action flex-column align-items-start editItem">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1" data-id="{{_id}}"><span class="setFavorite glyphicon {{isFavorite favorite}}"></span>
+								<span class="editable">{{itemName}}</span></h5>
+							<small>
+								<i class="fas fa-minus-circle removeFromStock"></i> {{inStock stock}} <i class="fas fa-plus-circle addToStock"></i>
+							</small>
+						</div>
+						{{#if description}}
+							<p class="mb-1">{{description}}</p>
+						{{/if}}
+					</a>
+				{{/if}}
+				{{#if recipeName}}
+					<a href="#" class="list-group-item list-group-item-action flex-column align-items-start viewRecipe">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1"><i class="fas fa-edit editRecipe" data-id="{{_id}}"></i> {{recipeName}}</h5>
+							<i class="glypg-icon {{getCategoryIcon recipeCategory}}"></i>
+						</div>
+					</a>
+				{{/if}}
 			{{else}}
 				<p class="alert alert-warning">Nothing found for {{query}}.</p>
 			{{/each}}
@@ -29,4 +38,16 @@
 		<input class="form-control mr-sm-2 searchField" type="search" placeholder="Search inventory" aria-label="Search">
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 	</div>
+</template>
+
+<template name="searchBar">
+	<div class="row">
+		<div class="col-md-6 mt-3">
+			<div class="searchBox">
+				<input class="searchField" type="search" placeholder="Search {{currentSearchArea}}" aria-label="Search">
+				<button class="btn search-btn" type="button"></button>
+			</div>
+		</div>
+	</div>
+
 </template>

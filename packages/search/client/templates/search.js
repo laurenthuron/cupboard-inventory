@@ -1,59 +1,60 @@
-Template.navSearch.onCreated( () => {
+Template.searchBar.onCreated( () => {
 	let template = Template.instance();
 
-	Session.set('navbar.searchQuery', '');
-	Session.set('navbar.searching', false);
+	Session.set('searchBar.searchQuery', '');
+	Session.set('searchBar.searching', false);
 	
 	template.autorun( () => {
-		console.log(Session.get('navbar.searchQuery'))
-		template.subscribe( 'InventorySearch', Session.get( 'navbar.searchQuery' ), () => {
-			setTimeout( () => {
-				Session.set( 'navbar.searching', false );
-			}, 300 );
+		console.log(Session.get('searchBar.searchQuery'))
+		template.subscribe( 'search',
+				Session.get( 'searchBar.searchQuery' ),
+				(Session.get('general.currentPage') || 'Inventory'),
+				() => {
+					setTimeout( () => {
+						Session.set( 'searchBar.searching', false );
+					}, 300 );
 		});
 	});
 });
 
-Template.search.helpers({
-	searching() {
-		return Session.get('navbar.searching');
-	},
-	query() {
-		return Session.get('navbar.searchQuery');
-	},
-	inventory() {
-		let inventory = Inventory.find();
-		if ( inventory ) {
-			return inventory;
-		}
-	},
-	isFavorite: function (bool) {
-		return (bool) ? 'glyphicon-star' : 'glyphicon-star-empty';
-	},
-	inStock: function (stockLevel) {
-		if ( stockLevel > 0 ) {
-			return `In stock: ${stockLevel}`;
-		} else {
-			return `Out of stock`;
-		}
+Template.searchBar.helpers({
+	currentSearchArea: function () {
+		return Session.get('general.currentPage');
 	}
 });
 
-Template.navSearch.events({
+Template.search.helpers({
+	searching: function () {
+		return Session.get('searchBar.searching');
+	},
+	query: function () {
+		return Session.get('searchBar.searchQuery');
+	},
+	searchResult: function () {
+		return utils.pluginDb[Session.get('general.currentPage')].find();
+	}
+});
+
+Template.searchBar.events({
 	'click .searchField' ( event, template ) {
 		Router.go("search");
 	},
 	'keyup .searchField' ( event, template ) {
-		console.log(Session.get('navbar.searchQuery'));
 		let value = event.target.value.trim();
 		
 		if ( value !== '' && event.keyCode !== 13 ) {
-			Session.set( 'navbar.searchQuery', value );
-			Session.set( 'navbar.searching', true );
+			Session.set( 'searchBar.searchQuery', value );
+			Session.set( 'searchBar.searching', true );
 		}
 		
 		if ( value === '' ) {
-			Session.set( 'navbar.searchQuery', value );
+			Session.set( 'searchBar.searchQuery', value );
 		}
+	},
+	'click button.search-btn' ( event, template ) {
+		event.preventDefault();
+		$('.searchField').val('');
+		Session.set( 'searchBar.searchQuery', '' );
+		$('.searchField').focus();
 	}
 });
