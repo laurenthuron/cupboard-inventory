@@ -1,10 +1,13 @@
 Template.editItemModal.onCreated( function () {
-	this.subscribe('Inventory');
+	Session.set('manage-items.addItemModal.hasError', false);
 });
 
 Template.editItemModal.helpers({
 	currentDoc: function () {
 		return Inventory.findOne(Session.get('manage-items.listItems.editItemId'));
+	},
+	InventorySchema: function () {
+		return Inventory.simpleSchema();
 	}
 });
 
@@ -26,6 +29,7 @@ AutoForm.hooks({
 	editInventoryItemForm: {
 		onSubmit: function (insertDoc, updateDoc, currentDoc) {
 			this.event.preventDefault();
+			Session.set('manage-items.addItemModal.hasError', false);
 			const self = this;
 			Meteor.call('editItem', currentDoc._id, updateDoc, function ( error, result ) {
 				if ( error ) {
@@ -41,8 +45,8 @@ AutoForm.hooks({
 			$('#editItemModal').modal('hide');
 			return false;
 		},
-		onError: function (error) {
-		
+		onError: function (formType, error) {
+			Session.set('manage-items.addItemModal.hasError', error.message);
 		}
 	}
 });

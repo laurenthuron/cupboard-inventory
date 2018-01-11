@@ -16,10 +16,18 @@
 	<div class="container">
 		{{> searchBar}}
 		{{> yield "main"}}
+		{{> yield "pageButtons"}}
 	</div>
 	{{/if}}
 
 		{{> yield "footer"}}
+
+
+	{{> addItemModal}}
+	{{> editItemModal}}
+
+	{{> addRecipeModal}}
+	{{> editRecipeModal}}
 </template>
 
 <template name="loading">

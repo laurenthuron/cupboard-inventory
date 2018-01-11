@@ -2,12 +2,11 @@ Meteor.methods({
 	addItem: function ( doc ) {
 		check(doc, {
 			itemName: String,
-			quantity: Number,
+			unitOfMeasure:  Match.Maybe(String),
 			stock: Number,
-			quantity_units: String,
 			category: String,
 			description: Match.Maybe(String),
-			itemPrice: Number
+			itemPrice:  Match.Maybe(Number)
 		});
 		if (Roles.userIsInRole(this.userId, "user")) {
 			return Inventory.insert(doc);
@@ -19,12 +18,11 @@ Meteor.methods({
 		check(updateDoc, {
 			$set: {
 				itemName: String,
-				quantity: Number,
+				unitOfMeasure:  Match.Maybe(String),
 				stock: Number,
-				quantity_units: String,
 				category: String,
 				description: Match.Maybe(String),
-				itemPrice: Number
+				itemPrice:  Match.Maybe(Number)
 			}
 		});
 		if (Roles.userIsInRole(this.userId, "user")) {

@@ -4,6 +4,12 @@ Router.route('/manageRecipes', {
 		return Meteor.subscribe('Recipes');
 	},
 	action: function () {
+		this.render('manageRecipes', {
+			to: 'main'
+		});
+		this.render('addRecipe', {
+			to: 'pageButtons'
+		});
 	}
 });
 

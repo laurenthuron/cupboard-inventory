@@ -1,7 +1,13 @@
 <template name="addItem">
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addItemModal">
-		Add Item
-	</button>
+	<div class="row">
+		<div class="col-xs-12 col-lg-12 mt-2">
+			<div class="d-flex flex-row-reverse">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addItemModal">
+					<i class="glyphicon glyphicon-plus"></i> Add Item
+				</button>
+			</div>
+		</div>
+	</div>
 </template>
 
 <template name="addItemModal">
@@ -9,7 +15,7 @@
 	<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				{{#autoForm collection="Inventory" id="insertInventoryItemForm" type="normal"}}
+				{{#autoForm collection="Inventory" schema=InventorySchema id="insertInventoryItemForm" validation="submit" type="normal"}}
 					<div class="modal-header">
 						<h5 class="modal-title" id="addItemModalLabel">Add Item</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -19,7 +25,7 @@
 					<div class="modal-body">
 						<legend>Add to inventory</legend>
 						{{#if hasError}}
-							<div class="well has-error">
+							<div class="alert alert-warning" role="alert">
 								{{hasError}}
 							</div>
 						{{/if}}
@@ -57,16 +63,10 @@
 						</div>
 						<br>
 						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="col-lg-8 col-md-8 col-sm-12">
 								<div class="input-group">
-									<span class="input-group-addon">Quantity</span>
-									{{> afFieldInput name='quantity'}}
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon">Units</span>
-									{{> afFieldInput name='quantity_units'}}
+									<span class="input-group-addon">Unit of Measure</span>
+									{{> afFieldInput name='unitOfMeasure'}}
 								</div>
 							</div>
 						</div>
@@ -81,8 +81,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Add Inventory Item</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
+						<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Inventory Item</button>
 					</div>
 				{{/autoForm}}
 			</div>
