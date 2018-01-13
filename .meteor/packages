@@ -25,6 +25,7 @@ accounts-facebook
 http
 underscore
 check
+session
 alanning:roles
 iron:router
 aldeed:collection2-core
