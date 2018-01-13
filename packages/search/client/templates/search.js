@@ -17,6 +17,12 @@ Template.searchBar.onCreated( () => {
 	});
 });
 
+Template.search.onDestroyed( function () {
+	// cleanup anything in the search bar and the session query.
+	$('.searchField').val('');
+	Session.set( 'searchBar.searchQuery', '' );
+});
+
 Template.searchBar.helpers({
 	currentSearchArea: function () {
 		return Session.get('general.currentPage');
