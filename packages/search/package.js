@@ -19,6 +19,10 @@ Package.onUse(function(api) {
   api.use(['templating', 'iron:router', "reactive-var", 'session'], "client");
   
   api.addFiles([
+      'common/startup.js'
+  ], ['client', 'server']);
+  
+  api.addFiles([
       'client/templates/search.html',
       'client/templates/search.js',
       'client/routes.js'
