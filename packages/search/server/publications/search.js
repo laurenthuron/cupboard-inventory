@@ -5,7 +5,7 @@ Meteor.publish('search', function ( search, dbName ) {
 	if ( currentUserId ) {
 		if (Roles.userIsInRole(currentUserId, ['admin', 'user'])) {
 			let query      = {},
-					projection = { limit: 10, sort: { title: 1 } };
+					projection = { limit: 10, sort: { createdOn: 1 } };
 			
 			if ( search ) {
 				let regex = new RegExp( search, 'i' );
