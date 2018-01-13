@@ -3,9 +3,9 @@ Template.searchBar.onCreated( () => {
 
 	Session.set('searchBar.searchQuery', '');
 	Session.set('searchBar.searching', false);
-	
+	// reactive subscription on the search template
+	// takes a query and a page name. Both are saved on session, making them reactive
 	template.autorun( () => {
-		console.log(Session.get('searchBar.searchQuery'))
 		template.subscribe( 'search',
 				Session.get( 'searchBar.searchQuery' ),
 				(Session.get('general.currentPage')),
@@ -25,15 +25,18 @@ Template.search.onDestroyed( function () {
 
 Template.searchBar.helpers({
 	currentSearchArea: function () {
+		// Search bar placeholder
 		return Session.get('general.currentPage');
 	}
 });
 
 Template.search.helpers({
 	searching: function () {
+		// links the searchBar template search entry and the autorun searching template trigger
 		return Session.get('searchBar.searching');
 	},
 	query: function () {
+		// links the searchBar template search query to the autorun search subscription on the search template
 		return Session.get('searchBar.searchQuery');
 	},
 	searchResult: function () {
@@ -62,6 +65,7 @@ Template.search.helpers({
 
 Template.searchBar.events({
 	'click .searchField' ( event, template ) {
+		// this way of doing the search needs changing
 		Router.go("search");
 	},
 	'keyup .searchField' ( event, template ) {
@@ -77,9 +81,10 @@ Template.searchBar.events({
 		}
 	},
 	'click button.search-btn' ( event, template ) {
+		// not really a search button, more like a reset button in function
 		event.preventDefault();
-		$('.searchField').val('');
-		Session.set( 'searchBar.searchQuery', '' );
-		$('.searchField').focus();
+		$('.searchField').val(''); // clear the search field value.
+		Session.set( 'searchBar.searchQuery', '' ); // reset the corresponding session
+		$('.searchField').focus(); // refocus on the search input since we clicked out of it
 	}
 });
