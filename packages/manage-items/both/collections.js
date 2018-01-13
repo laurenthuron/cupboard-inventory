@@ -3,6 +3,9 @@ import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform', 'denyInsert', 'denyUpdate']);
 
 Inventory = new Mongo.Collection('inventory');
+if ( Meteor.isServer ) {
+	Inventory._ensureIndex({itemName: 1, category: 1, favorite: 1});
+}
 
 inventorySchema = new SimpleSchema({
 	itemName: {
@@ -16,22 +19,17 @@ inventorySchema = new SimpleSchema({
 			}
 		}
 	},
-	quantity: {
-		type: Number,
-		defaultValue: 0,
-		min: 0
-	},
-	quantity_units: {
+	unitOfMeasure: {
 		type: String,
-		defaultValue: 'g',
+		optional: true,
 		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'unit', 'container'],
 		autoform: {
 			options: [
-				{label: "ml", value: "ml"},
-				{label: "l", value: "l"},
-				{label: "mg", value: "mg"},
-				{label: "g", value: "g"},
-				{label: "kg", value: "kg"},
+				{label: "milliliter", value: "ml"},
+				{label: "litre", value: "l"},
+				{label: "milligram", value: "mg"},
+				{label: "gram", value: "g"},
+				{label: "kilogram", value: "kg"},
 				{label: "can", value: "can"},
 				{label: "unit", value: "unit"},
 				{label: "container", value: "container"}

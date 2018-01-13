@@ -7,3 +7,69 @@ body {
     background-repeat: repeat;
     height: 100vh;
 }
+
+.searchBox {
+    display: inline-block;
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px 55px 9px 15px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+
+.searchBox.hovered, .searchBox:hover, .searchBox:active {
+    border: 1px solid #aaa;
+}
+
+.searchBox input[type=search] {
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    padding: 0;
+    background: transparent;
+    width: 100%;
+}
+.searchBox input[type=search]:hover,
+.searchBox input[type=search]:focus,
+.searchBox input[type=search]:active {
+    box-shadow: none;
+    outline: none;
+}
+
+.searchBox .search-btn {
+    position: absolute;
+    right: 2px;
+    font-size: 21px;
+    top: 2px;
+    border-radius: 3px;
+    padding: 2px 10px 2px;
+    color: rgba(000, 000, 000, 0.5);
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.searchBox input[type=search]:hover + .search-btn,
+.searchBox input[type=search]:focus + .search-btn {
+    color: #00aa31;
+}
+
+.searchBox .search-btn:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e003";
+}
+
+.searchBox input[type=search]:focus + .search-btn:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e088";
+}
+
+.searchBox .search-btn,
+.searchBox .search-btn:before,
+.searchBox input[type=search]:focus + .search-btn:before {
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}

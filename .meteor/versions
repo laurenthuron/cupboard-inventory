@@ -59,6 +59,7 @@ jquery@1.11.10
 launch-screen@1.1.1
 laurenth:manage-items@0.0.1
 laurenth:navbar@0.0.1
+laurenth:search@0.0.1
 laurenth:user-management@0.0.1
 laurenth:utils@0.0.1
 less@2.7.11
