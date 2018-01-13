@@ -1,3 +1,5 @@
+import { Session } from "meteor/session";
+
 Router.configure({
 	layoutTemplate:'ApplicationLayout'
 });
@@ -84,4 +86,10 @@ Router.route('/(.*)', function () {//regex for every route, must be last
 		this.redirect("home");
 	} else
 		this.render('loading');
+});
+
+// onStop hook is executed whenever we LEAVE a route
+Router.onStop(function(){
+	// register the previous route location in a session variable
+	Session.set("general.previousLocationPath", this.originalUrl || this.url);
 });

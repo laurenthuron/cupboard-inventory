@@ -1,5 +1,5 @@
 Template.listItems.onCreated( function () {
-	this.subscribe('Inventory');
+
 });
 
 Template.listItems.onRendered( function () {
@@ -9,21 +9,14 @@ Template.listItems.onRendered( function () {
 Template.listItems.helpers({
 	inventoryList: function () {
 		return Inventory.find();
-	},
-	inStock: function (stockLevel) {
-		if ( stockLevel > 0 ) {
-			return `In stock: ${stockLevel}`;
-		} else {
-			return `Out of stock`;
-		}
 	}
 });
 
 Template.listItems.events({
-	"click .editItem h5" ( event, template ) {
+	"click span.editable" ( event, template ) {
 		event.preventDefault();
 		
-		const itemId = $(event.target).attr('data-id');
+		const itemId = $(event.target).closest('h5').attr('data-id');
 		Session.set('manage-items.listItems.editItemId', itemId);
 		$('#editItemModal').modal('toggle');
 	},
@@ -38,6 +31,16 @@ Template.listItems.events({
 		Meteor.call('addToStock', this._id, function ( error, result ) {
 			if ( error ) {
 				console.log(error);
+			}
+		});
+	},
+	"click .setFavorite" ( event, template ) {
+		event.preventDefault();
+		
+		const itemId = $(event.target).closest('.editItem').find('h5').attr('data-id');
+		Meteor.call('favorite', itemId, function ( error, result ) {
+			if ( error ) {
+				console.log(error)
 			}
 		});
 	}

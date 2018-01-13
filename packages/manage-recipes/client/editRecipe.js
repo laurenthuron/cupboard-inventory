@@ -1,5 +1,5 @@
 Template.editRecipeModal.onCreated( function () {
-	this.subscribe('Recipes');
+
 });
 
 Template.editRecipeModal.helpers({

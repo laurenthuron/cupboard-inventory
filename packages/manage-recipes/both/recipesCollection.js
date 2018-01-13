@@ -4,6 +4,10 @@ SimpleSchema.extendOptions(['autoform', 'denyInsert', 'denyUpdate']);
 
 Recipes = new Mongo.Collection('recipes');
 
+if ( Meteor.isServer ) {
+	Recipes._ensureIndex({recipeName: 1, recipeDescription: 1, recipeCategory: 1});
+}
+
 IngredientSchema = new SimpleSchema({
 	itemName: {
 		type: String,

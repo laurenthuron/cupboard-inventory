@@ -1,10 +1,12 @@
 <template name="listItems">
 	{{#if inventoryList}}
-	<div class="list-group mt-2">
+	<div class="list-group">
 		{{#each inventoryList}}
 			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start editItem">
 				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1" data-id="{{_id}}">{{itemName}} {{quantity}}{{quantity_units}}</h5>
+
+					<h5 class="mb-1" data-id="{{_id}}"><span class="setFavorite glyphicon {{isFavorite favorite}}"></span>
+						<span class="editable">{{itemName}}</span></h5>
 					<small>
 						<i class="fas fa-minus-circle removeFromStock"></i> {{inStock stock}} <i class="fas fa-plus-circle addToStock"></i>
 					</small>
@@ -13,7 +15,10 @@
 					<p class="mb-1">{{description}}</p>
 				{{/if}}
 			</a>
+		{{else}}
+			<p class="p-3 mb-2 bg-info text-white rounded">There are no items in your inventory yet. Try adding some now!</p>
 		{{/each}}
 	</div>
+
 	{{/if}}
 </template>

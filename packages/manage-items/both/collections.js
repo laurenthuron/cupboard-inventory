@@ -3,6 +3,9 @@ import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform', 'denyInsert', 'denyUpdate']);
 
 Inventory = new Mongo.Collection('inventory');
+if ( Meteor.isServer ) {
+	Inventory._ensureIndex({itemName: 1, category: 1, favorite: 1});
+}
 
 inventorySchema = new SimpleSchema({
 	itemName: {
@@ -16,23 +19,19 @@ inventorySchema = new SimpleSchema({
 			}
 		}
 	},
-	quantity: {
-		type: Number,
-		defaultValue: 0,
-		min: 0
-	},
-	quantity_units: {
+	unitOfMeasure: {
 		type: String,
-		defaultValue: 'g',
-		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'container'],
+		optional: true,
+		allowedValues: ['ml', 'l', 'mg', 'g', 'kg', 'can', 'unit', 'container'],
 		autoform: {
 			options: [
-				{label: "ml", value: "ml"},
-				{label: "l", value: "l"},
-				{label: "mg", value: "mg"},
-				{label: "g", value: "g"},
-				{label: "kg", value: "kg"},
+				{label: "milliliter", value: "ml"},
+				{label: "litre", value: "l"},
+				{label: "milligram", value: "mg"},
+				{label: "gram", value: "g"},
+				{label: "kilogram", value: "kg"},
 				{label: "can", value: "can"},
+				{label: "unit", value: "unit"},
 				{label: "container", value: "container"}
 			]
 		}
@@ -65,7 +64,7 @@ inventorySchema = new SimpleSchema({
 	category: {
 		type: String,
 		label: "Category",
-		allowedValues: ['Perishables','NonPerishables', 'Meat', 'Poultry', 'Dairy', 'Frozen', 'Fruits', 'Deli', 'CannedGoods', 'Spices', 'Cereals', 'ReadyMade'],
+		allowedValues: ['Perishables','NonPerishables', 'Vegetables', 'Meat', 'Poultry', 'Dairy', 'Frozen', 'Fruits', 'Deli', 'CannedGoods', 'Spices', 'Cereals', 'ReadyMade'],
 		autoform: {
 			options: [
 				{label: "Perishables", value: "Perishables"},
@@ -91,11 +90,22 @@ inventorySchema = new SimpleSchema({
 		autoValue: function () {
 			return new Date();
 		}
+	},
+	favorite: {
+		type: Boolean,
+		label: 'Favorite',
+		defaultValue: false
+	},
+	itemPrice: {
+		type: Number,
+		min: 0,
+		optional: true,
+		label: "Price"
 	}
 });
 
 Inventory.attachSchema(inventorySchema);
 
-Inventory.permit('insert').ifLoggedIn();
-Inventory.permit('update').ifLoggedIn();
-Inventory.permit('remove').ifLoggedIn();
+Inventory.permit('insert').ifLoggedIn().allowInClientCode();
+Inventory.permit('update').ifLoggedIn().allowInClientCode();
+Inventory.permit('remove').ifLoggedIn().allowInClientCode();

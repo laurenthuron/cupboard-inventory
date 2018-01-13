@@ -3,7 +3,7 @@
 	<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				{{#autoForm collection="Inventory" doc=currentDoc id="editInventoryItemForm" type="normal"}}
+				{{#autoForm collection="Inventory" schema=InventorySchema doc=currentDoc id="editInventoryItemForm" type="normal"}}
 					<div class="modal-header">
 						<h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -13,7 +13,7 @@
 					<div class="modal-body">
 						<legend>{{itemName}}</legend>
 						{{#if hasError}}
-							<div class="well has-error">
+							<div class="alert alert-warning" role="alert">
 								{{hasError}}
 							</div>
 						{{/if}}
@@ -22,6 +22,15 @@
 								<div class="input-group">
 									<span class="input-group-addon">Name</span>
 									{{> afFieldInput name='itemName'}}
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="input-group">
+									<span class="input-group-addon">$</span>
+									{{> afFieldInput name='itemPrice'}}
 								</div>
 							</div>
 						</div>
@@ -42,16 +51,10 @@
 						</div>
 						<br>
 						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="input-group">
-									<span class="input-group-addon">Quantity</span>
-									{{> afFieldInput name='quantity'}}
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6">
-								<div class="input-group">
-									<span class="input-group-addon">Units</span>
-									{{> afFieldInput name='quantity_units'}}
+									<span class="input-group-addon">Unit of Measure</span>
+									{{> afFieldInput name='unitOfMeasure'}}
 								</div>
 							</div>
 						</div>

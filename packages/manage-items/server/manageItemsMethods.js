@@ -2,11 +2,11 @@ Meteor.methods({
 	addItem: function ( doc ) {
 		check(doc, {
 			itemName: String,
-			quantity: Number,
+			unitOfMeasure:  Match.Maybe(String),
 			stock: Number,
-			quantity_units: String,
 			category: String,
-			description: Match.Maybe(String)
+			description: Match.Maybe(String),
+			itemPrice:  Match.Maybe(Number)
 		});
 		if (Roles.userIsInRole(this.userId, "user")) {
 			return Inventory.insert(doc);
@@ -14,7 +14,17 @@ Meteor.methods({
 		return false;
 	},
 	editItem: function ( docId, updateDoc ) {
-		
+		check ( docId, String );
+		check(updateDoc, {
+			$set: {
+				itemName: String,
+				unitOfMeasure:  Match.Maybe(String),
+				stock: Number,
+				category: String,
+				description: Match.Maybe(String),
+				itemPrice:  Match.Maybe(Number)
+			}
+		});
 		if (Roles.userIsInRole(this.userId, "user")) {
 			return Inventory.update(docId, updateDoc);
 		}
@@ -43,5 +53,14 @@ Meteor.methods({
 			}
 		}
 		return false;
+	},
+	favorite: function ( docId ) {
+		if (Roles.userIsInRole(this.userId, "user")) {
+			const item = Inventory.findOne(docId, {fields: {favorite: 1}});
+			if ( item ) {
+				let bool = (item.favorite)? false : true;
+				return Inventory.update(docId, {$set: {favorite: bool}});
+			}
+		}
 	}
 });
