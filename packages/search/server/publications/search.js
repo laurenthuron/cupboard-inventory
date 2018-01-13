@@ -21,6 +21,15 @@ Meteor.publish('search', function ( search, dbName ) {
 				
 				projection.limit = 100;
 			}
+			if ( dbName === "_searchAll" ) {
+				let cursor = [];
+				for ( let collection in utils.dbIndex ) {
+					if ( collection !== "_searchAll" ) {
+						cursor.push(utils.dbIndex[collection].find( query, projection ));
+					}
+				}
+				return cursor;
+			}
 			return utils.dbIndex[dbName].find( query, projection );
 		} else {
 			this.stop();

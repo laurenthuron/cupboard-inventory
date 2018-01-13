@@ -31,7 +31,26 @@ Template.search.helpers({
 		return Session.get('searchBar.searchQuery');
 	},
 	searchResult: function () {
-		return utils.pluginDb[Session.get('general.currentPage')].find();
+		// The currentPage session informs the search from which page it was queried - i.e. items, recipes page etc
+		let searchDbString = Session.get('general.currentPage');
+		// If the search came from the home page it is then a global search, set the current page to "_searchAll"
+		if (utils.validURL(Session.get("general.previousLocationPath")) ||
+				Session.get("general.previousLocationPath") === "/home") {
+			Session.set("general.currentPage", "_searchAll");
+			
+			let cursors = []; // we will save the returned cursors within an array
+			
+			// iterate through all registered plugin databases and return the result as a fetch() array.
+			for ( let db in utils.pluginDb ) {
+				cursors.push( utils.pluginDb[db].find().fetch() );
+			}
+			// finally concatenate all arrays within cursors into a single one. The template will take care to
+			// differenciate between the results.
+			return [].concat.apply([], cursors);
+		} else {
+			// If we're on a plugin page, just return the query from the plugin's corresponding database
+			return utils.pluginDb[searchDbString].find();
+		}
 	}
 });
 
