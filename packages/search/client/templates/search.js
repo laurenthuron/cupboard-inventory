@@ -8,7 +8,7 @@ Template.searchBar.onCreated( () => {
 		console.log(Session.get('searchBar.searchQuery'))
 		template.subscribe( 'search',
 				Session.get( 'searchBar.searchQuery' ),
-				(Session.get('general.currentPage') || 'Inventory'),
+				(Session.get('general.currentPage')),
 				() => {
 					setTimeout( () => {
 						Session.set( 'searchBar.searching', false );
